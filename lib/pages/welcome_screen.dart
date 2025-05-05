@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'package:dietlens/pages/Auth_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -122,20 +123,31 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         const SizedBox(height: 16),
-                        Container(
-                          height: 50,
-                          width: 200,
-                          decoration: BoxDecoration(
-                            color: Colors.black87,
-                            borderRadius: BorderRadius.circular(26),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Get Started',
-                              style: GoogleFonts.righteous(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
+                        GestureDetector(
+                          onTap: () {
+                            // Navigate to the next screen
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const AuthScreen(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            height: 50,
+                            width: 200,
+                            decoration: BoxDecoration(
+                              color: Colors.black87,
+                              borderRadius: BorderRadius.circular(26),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Get Started',
+                                style: GoogleFonts.righteous(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ),
                           ),
@@ -153,23 +165,4 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   }
 
   // Helper widget for floating food icons with subtle animation
-  Widget _buildFloatingFoodIcon({required double angle}) {
-    return TweenAnimationBuilder<double>(
-      tween: Tween(begin: 0.0, end: 2 * math.pi),
-      duration: const Duration(seconds: 20),
-      builder: (context, value, child) {
-        return Transform.rotate(angle: math.sin(value) * angle, child: child);
-      },
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: Colors.green.withOpacity(0.1),
-          shape: BoxShape.circle,
-        ),
-        child: const Padding(
-          padding: EdgeInsets.all(20),
-          child: Icon(Icons.apple, color: Colors.green, size: 30),
-        ),
-      ),
-    );
-  }
 }

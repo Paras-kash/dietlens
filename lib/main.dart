@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dietlens/pages/welcome_screen.dart';
+import 'package:dietlens/pages/Auth_Screen.dart';
+import 'package:dietlens/pages/LoginScreen.dart';
+import 'package:dietlens/pages/SignupScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +24,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Roboto',
       ),
-      home: const WelcomeScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const WelcomeScreen(),
+        '/AuthScreen': (context) => const AuthScreen(),
+        '/login': (context) => const LoginScreen(),
+        '/signup': (context) => const SignupScreen(),
+      },
     );
   }
 }
