@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -81,28 +83,32 @@ class _LoginScreenState extends State<LoginScreen>
                   opacity: _fadeInAnimation,
                   child: Column(
                     children: [
-                      Text(
-                        'Welcome Back',
-                        style: GoogleFonts.righteous(
-                          fontSize: 32,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        'Login',
-                        style: GoogleFonts.righteous(
-                          fontSize: 38,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xFFF2BB05),
-                        ),
-                        textAlign: TextAlign.center,
+                      Row(
+                        children: [
+                          Text(
+                            'Login to',
+                            style: GoogleFonts.righteous(
+                              fontSize: 38,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(width: 10),
+                          Text(
+                            'Continue',
+                            style: GoogleFonts.righteous(
+                              fontSize: 38,
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0xFFF2BB05),
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        'Sign in to continue',
+                        '',
                         style: GoogleFonts.poppins(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
@@ -114,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen>
                   ),
                 ),
 
-                const SizedBox(height: 40),
+                const SizedBox(height: 300),
 
                 // Login Form with animation
                 SlideTransition(
@@ -128,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen>
                         _buildTextField(
                           controller: _emailController,
                           labelText: 'Email',
-                          prefixIcon: Icons.email_outlined,
+                          prefixIcon: CupertinoIcons.mail,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your email';
@@ -146,7 +152,7 @@ class _LoginScreenState extends State<LoginScreen>
                         _buildTextField(
                           controller: _passwordController,
                           labelText: 'Password',
-                          prefixIcon: Icons.lock_outline,
+                          prefixIcon: CupertinoIcons.lock,
                           obscureText: true,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -224,17 +230,21 @@ class _LoginScreenState extends State<LoginScreen>
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            _buildSocialLoginButton(
-                              Icons.g_mobiledata,
-                              Colors.red,
+                            _buildSocialLoginButtonWithWidget(
+                              SvgPicture.asset(
+                                'assets/images/google.svg',
+                                width: 24,
+                                height: 24,
+                              ),
                             ),
                             const SizedBox(width: 20),
-                            _buildSocialLoginButton(
-                              Icons.facebook,
-                              Colors.blue,
+                            _buildSocialLoginButtonWithWidget(
+                              SvgPicture.asset(
+                                'assets/images/apple.svg',
+                                width: 24,
+                                height: 24,
+                              ),
                             ),
-                            const SizedBox(width: 20),
-                            _buildSocialLoginButton(Icons.apple, Colors.black),
                           ],
                         ),
 
@@ -321,7 +331,7 @@ class _LoginScreenState extends State<LoginScreen>
   }
 
   // Helper function to build social login buttons
-  Widget _buildSocialLoginButton(IconData icon, Color color) {
+  Widget _buildSocialLoginButtonWithWidget(Widget iconWidget) {
     return Container(
       width: 50,
       height: 50,
@@ -337,7 +347,7 @@ class _LoginScreenState extends State<LoginScreen>
           ),
         ],
       ),
-      child: Icon(icon, color: color, size: 28),
+      child: Center(child: iconWidget),
     );
   }
 
