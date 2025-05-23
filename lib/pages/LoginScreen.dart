@@ -120,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen>
                   ),
                 ),
 
-                const SizedBox(height: 300),
+                const SizedBox(height: 200),
 
                 // Login Form with animation
                 SlideTransition(

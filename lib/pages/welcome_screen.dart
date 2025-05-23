@@ -1,6 +1,5 @@
 import 'package:dietlens/pages/LoginScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -154,47 +153,33 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                         ),
                         const SizedBox(height: 12),
                         Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            const Expanded(child: Divider()),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 15,
-                              ),
-                              child: Text(
-                                "Or Continue With",
-                                style: GoogleFonts.poppins(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black38,
-                                ),
-                              ),
-                            ),
-                            const Expanded(child: Divider()),
-                          ],
-                        ),
-
-                        const SizedBox(height: 20),
-                        Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            _buildSocialLoginButtonWithWidget(
-                              SvgPicture.asset(
-                                'assets/images/google.svg',
-                                width: 24,
-                                height: 24,
+                            Text(
+                              'Don\'t have an account?',
+                              style: GoogleFonts.poppins(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.black38,
                               ),
+                              textAlign: TextAlign.center,
                             ),
-                            const SizedBox(width: 20),
-                            _buildSocialLoginButtonWithWidget(
-                              SvgPicture.asset(
-                                'assets/images/apple.svg',
-                                width: 24,
-                                height: 24,
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                foregroundColor: const Color(0xFFF2BB05),
+                                textStyle: GoogleFonts.poppins(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                ),
                               ),
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/signup');
+                              },
+                              child: Text('Sign Up'),
                             ),
                           ],
                         ),
+                        const SizedBox(height: 8),
                       ],
                     ),
                   ),
@@ -204,26 +189,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildSocialLoginButtonWithWidget(Widget iconWidget) {
-    return Container(
-      width: 50,
-      height: 50,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: Colors.white,
-        border: Border.all(color: Colors.grey.shade300),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade200,
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Center(child: iconWidget),
     );
   }
 
