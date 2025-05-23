@@ -1,3 +1,4 @@
+import 'package:dietlens/pages/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:dietlens/pages/welcome_screen.dart';
 
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
 
         '/login': (context) => const LoginScreen(),
         '/signup': (context) => const SignupScreen(),
+        '/home': (context) => const Homescreen(),
       },
     );
   }

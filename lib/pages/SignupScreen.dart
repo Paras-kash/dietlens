@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -338,7 +340,7 @@ class _SignupScreenState extends State<SignupScreen>
       print('Sign up with: ${_emailController.text}');
 
       // Navigate to home screen or dashboard
-      // Navigator.pushReplacementNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, '/home');
     }
   }
 }

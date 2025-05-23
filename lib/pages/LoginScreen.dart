@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -355,10 +357,9 @@ class _LoginScreenState extends State<LoginScreen>
   void _handleLogin() {
     if (_loginFormKey.currentState?.validate() ?? false) {
       // Implement login functionality
-      print('Login with: ${_emailController.text}');
 
       // Navigate to home screen or dashboard
-      // Navigator.pushReplacementNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, '/home');
     }
   }
 }
